@@ -1,0 +1,14 @@
+body {
+    margin: 5vh;
+    padding: 5vh;
+}
+
+#board {
+    background-color: whitesmoke;
+    height: 80vh;
+    border: solid;
+    border-width: 0.3vh;
+    border-color: aquamarine;
+    border-radius: 5%;
+    position: relative;
+}
