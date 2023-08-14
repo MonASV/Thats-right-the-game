@@ -10,5 +10,24 @@ body {
     border-width: 0.3vh;
     border-color: aquamarine;
     border-radius: 5%;
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.card {
+    /*order: 3;
+    display: inline-block;
+    perspective: 300px;
+    transform-style: preserve-3d;
+    display: grid;
+    flex-grow: 5;*/
+    background-color: aqua;
+    
+  }
+
+
+
+
