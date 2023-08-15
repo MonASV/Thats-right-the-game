@@ -108,22 +108,37 @@ class Button {
 class Review {
     constructor(myCards){
         this.cards = myCards;
+        this.points = 0;
+        this.domElement = null;
+        //this.createDomElement();
     }
     
     checkResults(){
         
-        let points = 0;
+        
         this.cards.forEach((card)=>{
             let correctAnswer = card.answer;
             let userAnswer = document.getElementById(card.cardNumber).value
             if(correctAnswer == userAnswer){
-            points++
+            this.points++
         }
     })
     
-    console.log(points)
-    return points
+    return this.points
 
+    }
+
+    printResults(){
+            
+            this.domElement = document.createElement("div")
+            this.domElement.id = "results";
+    
+            this.domElement.innerHTML = 
+            `<div>Correct answers: ${this.points}</div>`
+            
+            const parentElm = document.body;
+            parentElm.appendChild(this.domElement);
+        
     }
 }
 
@@ -170,6 +185,7 @@ geographyCards.forEach((cardObj)=>{
 const button = new Button();
 const review = new Review(myCards);
 button.domElement.addEventListener("click", () => review.checkResults())
+button.domElement.addEventListener("click", () => review.printResults())
 
 
 

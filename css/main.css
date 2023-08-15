@@ -40,6 +40,14 @@ body {
 
   }
 
-  #answers{
+  #results{
+    background-color: #ca1212;
+    color: black;
+    height: 50vh;
+    width: 50vw;
+    position: fixed;
+    text-align: center;
+    top: 30vh;
+    right: 25vw;
 
   }
