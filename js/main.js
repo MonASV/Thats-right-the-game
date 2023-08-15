@@ -53,11 +53,11 @@ class Card {
         this.width = 20;
         this.height = 20;
         this.domElement = null;
-        this.cards = geographyCards;
+        
 
         
         this.createDomElement();
-        console.log(this.cardObj)
+    
     }
     
     createDomElement(){
@@ -72,27 +72,75 @@ class Card {
             this.domElement.innerHTML = `
             <div class="geoCard" data-card-name="${this.cardObj.cardNumber}">
                 <div class="front">${this.cardObj.question}</div>
-                <input class="answer" type="text" placeholder="type the number of your answer">
+                <input id="${this.cardObj.cardNumber}" type="number" size="5" placeholder="...">
                 
             </div>
         `;
         const myBoard = document.getElementById("board");
         myBoard.appendChild(this.domElement);
-
-        
-        console.log(this.domElement)
         ;
         
         document.querySelectorAll('#board').innerHTML = this.domElement;
         };
         
-        
+   
 
 
     }
 
+class Button {
+    constructor(){
+        this.domElement = null;
+        this.createDomElement();
+    }
+    createDomElement(){
+        this.domElement = document.createElement("div")
+        this.domElement.id = "review";
 
+        this.domElement.innerHTML = 
+        `<button type="submit">Review</button>`
+        
+        const parentElm = document.body;
+        parentElm.appendChild(this.domElement);
+    }
+}
+
+
+const myCards = [];
 geographyCards.forEach((cardObj)=>{
-   const card = new Card(cardObj);
+    const card = new Card(cardObj);
+
+    myCards.push(cardObj)
 })
 
+const button = new Button();
+
+
+
+
+class Review {
+    constructor(myCards){
+        this.cards = myCards;
+    }
+    
+    checkResults(){
+        
+        let points = 0;
+        this.cards.forEach((card)=>{
+            let correctAnswer = card.cardNumber;
+            let userAnswer = document.getElementById(card.cardNumber).value
+            if(correctAnswer == userAnswer){
+            points++
+        }
+    })
+    
+    console.log(points)
+    return points
+
+    }
+}
+
+
+const test = new Review(myCards);
+test.checkResults()
+button.domElement.addEventListener("click", () => test.checkResults())
