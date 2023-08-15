@@ -2,6 +2,7 @@ body {
     margin: 5vh;
     padding: 5vh;
     display: flex;
+    flex-direction:row;
     
 }
 
@@ -36,7 +37,12 @@ body {
     background-color: rgb(157, 231, 253);
     height: 80vh;
     width: 25vh;
-    display:inline-block;
+    border: solid;
+    border-width: 0.1vh;
+    border-color: rgb(42, 23, 240);
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;
 
   }
 

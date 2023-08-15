@@ -21,8 +21,8 @@ const geographyCards = [
     },
     {
     "cardNumber": 5,
-    "question": "What country are the Great Pyramids of Giza located in?",
-    "answer": "Egypt",
+    "question": "Which country has the largest population in the world??",
+    "answer": "China",
     },
     {
     "cardNumber": 6,
@@ -100,7 +100,7 @@ class Button {
         this.domElement.innerHTML = 
         `<button type="submit">Review</button>`
         
-        const parentElm = document.body;
+        const parentElm = document.getElementById("posible-answers");
         parentElm.appendChild(this.domElement);
     }
 }
@@ -156,6 +156,7 @@ class Answers {
     }
 
     createDomElement(){
+        
         this.domElement = document.createElement("div");
 
         this.domElement.id = "answers";
@@ -176,16 +177,26 @@ class Answers {
 
 }
 
+
 const myCards = [];
+
+
+geographyCards.sort((a, b) => Math.random() > 0.5 ? 1 : -1) //ternary operator, requires else statement. 1 and -1 is what the sort method is expecting
 geographyCards.forEach((cardObj)=>{
     const card = new Card(cardObj);
-    const answers = new Answers(cardObj);
     myCards.push(cardObj)
 })
+
+
+geographyCards.forEach((cardObj)=>{
+    const answers = new Answers(cardObj);
+})
+
+console.log(myCards)
 const button = new Button();
 const review = new Review(myCards);
 button.domElement.addEventListener("click", () => review.checkResults())
 button.domElement.addEventListener("click", () => review.printResults())
-
+setTimeout(() => {review.checkResults(); review.printResults()}, "180000")
 
 
