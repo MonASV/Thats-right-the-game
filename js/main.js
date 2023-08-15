@@ -72,7 +72,7 @@ class Card {
             this.domElement.innerHTML = `
             <div class="geoCard" data-card-name="${this.cardObj.cardNumber}">
                 <div class="front">${this.cardObj.question}</div>
-                <input id="${this.cardObj.cardNumber}" type="number" size="5" placeholder="...">
+                <input id="${this.cardObj.cardNumber}" class="anser" type="text" size="10" placeholder="...">
                 
             </div>
         `;
@@ -105,19 +105,6 @@ class Button {
     }
 }
 
-
-const myCards = [];
-geographyCards.forEach((cardObj)=>{
-    const card = new Card(cardObj);
-
-    myCards.push(cardObj)
-})
-
-const button = new Button();
-
-
-
-
 class Review {
     constructor(myCards){
         this.cards = myCards;
@@ -127,7 +114,7 @@ class Review {
         
         let points = 0;
         this.cards.forEach((card)=>{
-            let correctAnswer = card.cardNumber;
+            let correctAnswer = card.answer;
             let userAnswer = document.getElementById(card.cardNumber).value
             if(correctAnswer == userAnswer){
             points++
@@ -140,7 +127,49 @@ class Review {
     }
 }
 
+class Answers {
+    constructor(myCards){
+            this.cards = myCards
+            this.width = 10;
+            this.height = 5;
+            this.domElement = null;
+            
+    
+            
+            this.createDomElement();
+        
+    }
 
-const test = new Review(myCards);
-test.checkResults()
-button.domElement.addEventListener("click", () => test.checkResults())
+    createDomElement(){
+        this.domElement = document.createElement("div");
+
+        this.domElement.id = "answers";
+
+        this.domElement.style.width = this.width + "vw";
+        this.domElement.style.height = this.height + "vh";
+        
+            this.domElement.innerHTML = `
+                <div>${this.cards.answer}</div>
+        `;
+        const myBoard = document.getElementById("posible-answers");
+        myBoard.appendChild(this.domElement);
+        ;
+        
+        document.querySelectorAll('#posible-answers').innerHTML = this.domElement;
+        };
+
+
+}
+
+const myCards = [];
+geographyCards.forEach((cardObj)=>{
+    const card = new Card(cardObj);
+    const answers = new Answers(cardObj);
+    myCards.push(cardObj)
+})
+const button = new Button();
+const review = new Review(myCards);
+button.domElement.addEventListener("click", () => review.checkResults())
+
+
+

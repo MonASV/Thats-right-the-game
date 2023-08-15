@@ -1,11 +1,14 @@
 body {
     margin: 5vh;
     padding: 5vh;
+    display: flex;
+    
 }
 
 #board {
     background-color: whitesmoke;
     height: 80vh;
+    width: 70vw;
     border: solid;
     border-width: 0.3vh;
     border-color: aquamarine;
@@ -25,4 +28,18 @@ body {
 
   #review {
     text-align: right;
+    display: contents;
+    
+  }
+  
+  #posible-answers {
+    background-color: rgb(157, 231, 253);
+    height: 80vh;
+    width: 25vh;
+    display:inline-block;
+
+  }
+
+  #answers{
+
   }
