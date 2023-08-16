@@ -72,7 +72,7 @@ class Card {
             this.domElement.innerHTML = `
             <div class="geoCard" data-card-name="${this.cardObj.cardNumber}">
                 <div class="front">${this.cardObj.question}</div>
-                <input id="${this.cardObj.cardNumber}" class="anser" type="text" size="10" placeholder="...">
+                <input id="${this.cardObj.cardNumber}" class="anser" type="text" size="20" placeholder="...">
                 
             </div>
         `;
@@ -165,7 +165,7 @@ class Answers {
         this.domElement.style.height = this.height + "vh";
         
             this.domElement.innerHTML = `
-                <div>${this.cards.answer}</div>
+                <div class="answers-box">${this.cards.answer}</div>
         `;
         const myBoard = document.getElementById("posible-answers");
         myBoard.appendChild(this.domElement);
@@ -180,7 +180,7 @@ class Answers {
 
 const myCards = [];
 
-
+//document.addEventListener("click", ()=>{
 geographyCards.sort((a, b) => Math.random() > 0.5 ? 1 : -1) //ternary operator, requires else statement. 1 and -1 is what the sort method is expecting
 geographyCards.forEach((cardObj)=>{
     const card = new Card(cardObj);
@@ -192,7 +192,6 @@ geographyCards.forEach((cardObj)=>{
     const answers = new Answers(cardObj);
 })
 
-console.log(myCards)
 const button = new Button();
 const review = new Review(myCards);
 button.domElement.addEventListener("click", () => review.checkResults())
@@ -200,3 +199,48 @@ button.domElement.addEventListener("click", () => review.printResults())
 setTimeout(() => {review.checkResults(); review.printResults()}, "180000")
 
 
+//})
+
+
+/*********************/
+/******Home Page******/
+/*********************/
+
+class Categories {
+    constructor(categories){
+        this.categories = categories
+        this.width = 20;
+        this.height = 20;
+        this.domElement = null;
+        
+
+        
+        this.createDomElement();
+    
+    }
+    
+    createDomElement(){
+        this.domElement = getElementById("home").createElement("div");
+
+        this.domElement.className = "category";
+
+        this.domElement.style.width = this.width + "vw";
+        this.domElement.style.height = this.height + "vh";
+        
+        
+            this.domElement.innerHTML = `
+    
+                <div>${this.categories}</div>
+      
+        `;
+        const myBoard = getElementById("home").getElementById("board1");
+        myBoard.appendChild(this.domElement);
+        ;
+        
+        document.querySelectorAll('#board1').innerHTML = this.domElement;
+        };
+        
+}
+
+const myCate = new Categories();
+myCate.createDomElement(myCards)

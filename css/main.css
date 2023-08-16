@@ -3,6 +3,7 @@ body {
     padding: 5vh;
     display: flex;
     flex-direction:row;
+    background-image: url("https://cdn.dribbble.com/users/59947/screenshots/17006879/media/102a4edaac3eda5c7f1fc5d7e21a5b50.jpg?resize=768x576&vertical=center");
     
 }
 
@@ -12,7 +13,7 @@ body {
     width: 70vw;
     border: solid;
     border-width: 0.3vh;
-    border-color: aquamarine;
+    border-color: rgba(72, 36, 0, 0.259);
     border-radius: 5%;
     display: flex;
     flex-direction: row;
@@ -23,7 +24,13 @@ body {
 
 .card {
 
-    background-color: aqua;
+    background-color: rgb(220, 218, 162);
+    text-align: center;
+    font-size: 1.8vw;
+    border: solid;
+    border-width: 0.3vh;
+    border-color: rgba(72, 36, 0, 0.259);
+    border-radius: 5%;
     
   }
 
@@ -34,7 +41,8 @@ body {
   }
   
   #posible-answers {
-    background-color: rgb(157, 231, 253);
+
+    background-color: rgb(115, 84, 17);
     height: 80vh;
     width: 25vh;
     border: solid;
@@ -43,17 +51,55 @@ body {
     border-radius: 3%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    
 
   }
 
   #results{
-    background-color: #ca1212;
-    color: black;
+    background-color: #1274ca;
+    color: rgb(5, 5, 5);
     height: 50vh;
     width: 50vw;
     position: fixed;
     text-align: center;
-    top: 30vh;
+    font-size: 4vw;
+    top: 25vh;
     right: 25vw;
 
   }
+
+  .answers-box{
+    background-color: rgb(220, 218, 162);;
+    text-align: center;
+  }
+/*********************/
+/******Home Page******/
+/*********************/
+
+  #board1 {
+    background-color: rgb(219, 21, 21);
+    height: 80vh;
+    width: 80vw;
+    border: solid;
+    border-width: 0.3vh;
+    border-color: rgba(72, 36, 0, 0.259);
+    border-radius: 5%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#home-page{
+    
+        margin: 5vh;
+        padding: 5vw;
+        background-color: #1274ca;
+        background-image: url("httpds://cdn.dribbble.com/users/59947/screenshots/17006879/media/102a4edaac3eda5c7f1fc5d7e21a5b50.jpg?resize=768x576&vertical=center");
+    
+      
+        
+    
+}
