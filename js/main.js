@@ -46,6 +46,19 @@ const geographyCards = [
     }
 ]
 
+const gameCategories = [
+    "Geography",
+    "History",
+    "Math",
+    "Chemistry",
+    "Sport",
+    "Music",
+    "Art",
+    "Movies",
+    "JavaScript"
+
+]
+
 
 class Card {
     constructor(cardObj){
@@ -180,7 +193,7 @@ class Answers {
 
 const myCards = [];
 
-//document.addEventListener("click", ()=>{
+window.addEventListener("load", (event)=>{
 geographyCards.sort((a, b) => Math.random() > 0.5 ? 1 : -1) //ternary operator, requires else statement. 1 and -1 is what the sort method is expecting
 geographyCards.forEach((cardObj)=>{
     const card = new Card(cardObj);
@@ -199,12 +212,13 @@ button.domElement.addEventListener("click", () => review.printResults())
 setTimeout(() => {review.checkResults(); review.printResults()}, "180000")
 
 
-//})
+})
 
 
 /*********************/
 /******Home Page******/
 /*********************/
+
 
 class Categories {
     constructor(categories){
@@ -220,7 +234,7 @@ class Categories {
     }
     
     createDomElement(){
-        this.domElement = getElementById("home").createElement("div");
+        this.domElement = document.createElement("div");
 
         this.domElement.className = "category";
 
@@ -233,7 +247,7 @@ class Categories {
                 <div>${this.categories}</div>
       
         `;
-        const myBoard = getElementById("home").getElementById("board1");
+        const myBoard = document.getElementById("board1");
         myBoard.appendChild(this.domElement);
         ;
         
@@ -241,6 +255,7 @@ class Categories {
         };
         
 }
+gameCategories.forEach((category)=>{
+    const myCate = new Categories(category);
+})
 
-const myCate = new Categories();
-myCate.createDomElement(myCards)

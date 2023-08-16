@@ -78,7 +78,7 @@ body {
 /*********************/
 
   #board1 {
-    background-color: rgb(219, 21, 21);
+    background-color: rgb(120, 21, 219);
     height: 80vh;
     width: 80vw;
     border: solid;
@@ -90,6 +90,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 #home-page{
@@ -102,4 +103,15 @@ body {
       
         
     
+}
+
+.category{
+    background-color: rgb(95, 215, 234);
+    text-align: center;
+    font-size: 1.8vw;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: solid;
+    border-width: 0.3vh;
+    border-color: rgba(72, 36, 0, 0.259);
+    border-radius: 5%;
 }
