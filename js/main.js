@@ -441,7 +441,7 @@ const gameCategories = [
     {
         categoryName: "Geography",
         link: "./geography.html",
-        image: "../Images/background-geo.jpeg",
+        image: "../images/background-geo.jpeg",
         cardsArray: geographyCards
     },
     {
@@ -546,33 +546,32 @@ class Button {
 class Review {
     constructor(myCards) {
         this.cards = myCards;
-        this.points = 0;
         this.domElement = null;
         //this.createDomElement();
     }
 
     checkResults() {
-
+        let points = 0;
 
         this.cards.forEach((card) => {
             let correctAnswer = card.answer;
             let userAnswer = document.getElementById(card.cardNumber).value
             if (correctAnswer == userAnswer) {
-                this.points++
+                points++
             }
         })
 
-        return this.points
+        return points
 
     }
 
     printResults() {
-
+        const points = this.checkResults()
         this.domElement = document.createElement("div")
         this.domElement.id = "results";
 
         this.domElement.innerHTML =
-            `<div>Correct answers: ${this.points}</div>`
+            `<div>Correct answers: ${points}</div>`
 
         const parentElm = document.body;
         parentElm.appendChild(this.domElement);
@@ -642,11 +641,9 @@ class Game {
             const button = new Button();
             const review = new Review(myCards);
             button.domElement.addEventListener("click", () => {
-                review.checkResults();
                 review.printResults()
             })
             setTimeout(() => { 
-                review.checkResults(); 
                 review.printResults() 
             }, "120000")
 
@@ -720,6 +717,7 @@ else {
     const category = location.pathname.match(/.*\/(.*).html$/)[1]
     const game = new Game(category)
     game.initialize()
-    document.body.style.backgroundImage = `url('../Images/${category}.jpeg')`
+    const imagePath = `../images/${category}.jpeg`
+    document.body.style.backgroundImage = `url('${imagePath}')`
 }
 
