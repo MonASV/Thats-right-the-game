@@ -47,16 +47,34 @@ const geographyCards = [
 ]
 
 const gameCategories = [
-    "Geography",
-    "History",
-    "Math",
-    "Chemistry",
-    "Sport",
-    "Music",
-    "Art",
-    "Movies",
-    "JavaScript"
-
+    {categoryName: "Geography",
+    link: "./geography-game.html",
+    image: "../Images/background-geo.jpeg"
+    },
+    {categoryName: "History",
+    link: "./index.html"
+    },
+    {categoryName: "Math",
+    link: "./index.html"
+    },
+    {categoryName: "Chemistry",
+    link: "./index.html"
+    },
+    {categoryName: "Sport",
+    link: "./index.html"
+    },
+    {categoryName: "Music",
+    link: "./index.html"
+    },
+    {categoryName: "Art",
+    link: "./index.html"
+    },
+    {categoryName: "Movies",
+    link: "./index.html"
+    },
+    {categoryName: "JavaScript",
+    link: "./index.html"
+    }
 ]
 
 
@@ -240,11 +258,12 @@ class Categories {
 
         this.domElement.style.width = this.width + "vw";
         this.domElement.style.height = this.height + "vh";
+        //this.domElement.style.backgroundImage = url (this.categories.image)
         
         
             this.domElement.innerHTML = `
     
-                <div>${this.categories}</div>
+                <div>${this.categories.categoryName}</div>
       
         `;
         const myBoard = document.getElementById("board1");
@@ -252,6 +271,7 @@ class Categories {
         ;
         
         document.querySelectorAll('#board1').innerHTML = this.domElement;
+        this.domElement.addEventListener("click", () => location.href = this.categories.link);
         };
         
 }
