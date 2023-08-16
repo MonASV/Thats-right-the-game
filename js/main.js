@@ -1,5 +1,4 @@
-let category = location.pathname.match(/.*\/(.*).html$/)[1]
-console.log(category)
+
 
 const geographyCards = [
     {
@@ -191,11 +190,107 @@ const historyCards = [
 
 
 ]
+const artCards = [
+    {
+        "cardNumber": 1,
+        "question": "Vincent Van Gogh had an older brother who died at birth. What was his name?",
+        "answer": "Vincent",
+    },
+    {
+        "cardNumber": 2,
+        "question": "Which artist died poor but became incredibly rich after his death?",
+        "answer": "Vincent Van Gogh",
+    },
+    {
+        "cardNumber": 3,
+        "question": "Which famous abstract artist was blamed for stealing the “Mona Lisa”?",
+        "answer": "Pablo Picasso",
+    },
+    {
+        "cardNumber": 4,
+        "question": "Which Renaissance artist is the most famous procrastinator of all time?",
+        "answer": "Leonardo da Vinci",
+    },
+    {
+        "cardNumber": 5,
+        "question": "This painter continued his work despite having crippling arthritis.",
+        "answer": "Pierre-Auguste Renoir",
+    },
+    {
+        "cardNumber": 6,
+        "question": "Which artist is famous for Pop Art?",
+        "answer": "Andy Warhol",
+    },
+    {
+        "cardNumber": 7,
+        "question": "Which Italian architect and sculptor was famous for creating the Baroque style?",
+        "answer": "Raffaello Sanzio da Urbino, aka Raphael",
+    },
+    {
+        "cardNumber": 8,
+        "question": "This artist was struck in the face with a mallet by an envious rival, permanently disfiguring him.",
+        "answer": "Gian Lorenzo Bernini",
+    },
+    {
+        "cardNumber": 9,
+        "question": "Which Spanish painter is referred to as both the last of the old masters and the moderns?",
+        "answer": "Francisco Goya",
+    }
+]
+const sportCards = [
+    {
+        "cardNumber": 1,
+        "question": "What sport is best known as the 'king of sports'?",
+        "answer": "Soccer",
+    },
+    {
+        "cardNumber": 2,
+        "question": "What's the national sport of Canada?",
+        "answer": "Lacrosse",
+    },
+    {
+        "cardNumber": 3,
+        "question": "In what game is “love” a score?",
+        "answer": "Tennis",
+    },
+    {
+        "cardNumber": 4,
+        "question": "What sport is a lot like softball?",
+        "answer": "Baseball",
+    },
+    {
+        "cardNumber": 5,
+        "question": "Which sport uses a net, a racket, and a shuttlecock?",
+        "answer": "Badminton",
+    },
+    {
+        "cardNumber": 6,
+        "question": "What sport is called the “sport of kings”?",
+        "answer": "Polo",
+    },
+    {
+        "cardNumber": 7,
+        "question": "What sport starts with a tip-off or jump ball?",
+        "answer": "Basketball",
+    },
+    {
+        "cardNumber": 8,
+        "question": "In which winter sport are the terms “stale fish” and “mule kick” used?",
+        "answer": "Snowboarding",
+    },
+    {
+        "cardNumber": 9,
+        "question": "Which winter sport was already practiced 3000 years BC?",
+        "answer": "Ski",
+    }
+]
 const cardByCategory = {
     history: historyCards,
     geography: geographyCards,
     math: mathCards,
-    chemistry:chemistryCards,
+    chemistry: chemistryCards,
+    art: artCards,
+    sport: sportCards,
 
 }
 const gameCategories = [
@@ -240,7 +335,6 @@ const gameCategories = [
     }
 ]
 
-document.body.style.backgroundImage = `url('../Images/${category}.jpeg')`
 
 
 
@@ -269,7 +363,7 @@ class Card {
         this.domElement.innerHTML = `
             <div class="geoCard" data-card-name="${this.cardObj.cardNumber}">
                 <div class="front">${this.cardObj.question}</div>
-                <input id="${this.cardObj.cardNumber}" class="anser" type="text" size="20" placeholder="...">
+                <input id="${this.cardObj.cardNumber}" class="answer" type="text" size="20" placeholder="...">
                 
             </div>
         `;
@@ -277,7 +371,7 @@ class Card {
         myBoard.appendChild(this.domElement);
         ;
         console.log(this.cardObj.cardsArray)
-        document.querySelectorAll('#board').innerHTML = this.domElement;
+        //document.querySelectorAll('#board').innerHTML = this.domElement;
     };
 
 
@@ -297,7 +391,7 @@ class Button {
         this.domElement.innerHTML =
             `<button type="submit">Review</button>`
 
-        const parentElm = document.getElementById("posible-answers");
+        const parentElm = document.getElementById("possible-answers");
         parentElm.appendChild(this.domElement);
     }
 }
@@ -364,11 +458,11 @@ class Answers {
         this.domElement.innerHTML = `
                 <div class="answers-box">${this.cards.answer}</div>
         `;
-        const myBoard = document.getElementById("posible-answers");
+        const myBoard = document.getElementById("possible-answers");
         myBoard.appendChild(this.domElement);
-        
 
-        document.querySelectorAll('#posible-answers').innerHTML = this.domElement;
+
+        //document.querySelectorAll('#possible-answers').innerHTML = this.domElement;
     };
 
 
@@ -378,11 +472,12 @@ class Answers {
 
 class Game {
 
-    constructor() {
+    constructor(category) {
         this.category = category
         this.cards = cardByCategory[category]
     }
     initialize() {
+        //location.href = "./game.html"
         const myCards = [];
 
         window.addEventListener("load", (event) => {
@@ -391,25 +486,30 @@ class Game {
                 const card = new Card(cardObj);
                 myCards.push(cardObj)
             })
-        
-        
+
+            this.cards.sort((a, b) => Math.random() > 0.5 ? 1 : -1)
             this.cards.forEach((cardObj) => {
                 const answers = new Answers(cardObj);
             })
-        
+
             const button = new Button();
             const review = new Review(myCards);
-            button.domElement.addEventListener("click", () => review.checkResults())
-            button.domElement.addEventListener("click", () => review.printResults())
-            setTimeout(() => { review.checkResults(); review.printResults() }, "120000")
-        
-        
+            button.domElement.addEventListener("click", () => {
+                review.checkResults();
+                review.printResults()
+            })
+            setTimeout(() => { 
+                review.checkResults(); 
+                review.printResults() 
+            }, "120000")
+
+
         })
     }
 
 }
-const game1 = new Game(geographyCards)
-game1.initialize()
+//const game1 = new Game()
+//game1.initialize()
 
 
 
@@ -419,9 +519,9 @@ game1.initialize()
 /*********************/
 
 
-class Categories {
-    constructor(categories) {
-        this.categories = categories
+class GameTile {
+    constructor(category) {
+        this.category = category
         this.width = 20;
         this.height = 20;
         this.domElement = null;
@@ -434,38 +534,49 @@ class Categories {
 
     createDomElement() {
         this.domElement = document.createElement("div");
-        
+
         this.domElement.className = "category";
-        
+
         this.domElement.style.width = this.width + "vw";
         this.domElement.style.height = this.height + "vh";
         //this.domElement.style.backgroundImage = url (this.categories.image)
-        
-        
+
+
         this.domElement.innerHTML = `
         
-        <div>${this.categories.categoryName}</div>
+        <div>${this.category.categoryName}</div>
         
         `;
-    
+
 
         const myBoard = document.getElementById("board1");
         myBoard.appendChild(this.domElement);
-    
-        document.querySelectorAll('#board1').innerHTML = this.domElement;
+
+        //document.querySelectorAll('#board1').innerHTML = this.domElement;
         this.domElement.addEventListener("click", () => {
+
+
+            location.href = this.category.link
             
-           
-            location.href = this.categories.link
+
             
         });
-        
     };
-
 }
 
-    gameCategories.forEach((category) => {
-        new Categories(category);
-    })
+if(!location.pathname.endsWith(".html")) {
+    location.href = "./index.html"
+}
 
+if (location.pathname.endsWith("index.html")){
+    gameCategories.forEach((category) => {
+    new GameTile(category);
+})
+}
+else {
+    const category = location.pathname.match(/.*\/(.*).html$/)[1]
+    const game = new Game(category)
+    game.initialize()
+    document.body.style.backgroundImage = `url('../Images/${category}.jpeg')`
+}
 
