@@ -717,7 +717,7 @@ else {
     const category = location.pathname.match(/.*\/(.*).html$/)[1]
     const game = new Game(category)
     game.initialize()
-    const imagePath = `../images/${category}.jpeg`
-    document.body.style.backgroundImage = `url('${imagePath}')`
+    const imagePath = `./images/${category}.jpeg`
+    document.body.style.backgroundImage = "url("+`${imagePath}`+")"
+    console.log(imagePath)
 }
-
