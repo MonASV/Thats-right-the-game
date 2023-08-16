@@ -720,6 +720,6 @@ else {
     const category = location.pathname.match(/.*\/(.*).html$/)[1]
     const game = new Game(category)
     game.initialize()
-    document.body.style.backgroundImage = `url(../Images/${category}.jpeg)`
+    document.body.style.backgroundImage = `url('../Images/${category}.jpeg')`
 }
 
