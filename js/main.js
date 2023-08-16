@@ -1,4 +1,5 @@
-let category = location.href.slice(46, -5)
+let category = location.pathname.match(/.*\/(.*).html$/)[1]
+console.log(category)
 
 const geographyCards = [
     {
@@ -446,7 +447,7 @@ class Categories {
         <div>${this.categories.categoryName}</div>
         
         `;
-    if(location.href === "http://127.0.0.1:5500/index.html"){
+    
 
         const myBoard = document.getElementById("board1");
         myBoard.appendChild(this.domElement);
@@ -458,21 +459,13 @@ class Categories {
             location.href = this.categories.link
             
         });
-        }
-
-        //this.domElement.addEventListener("click", () => {const game1 = new Game(this.categories.cardsArray); game1.initialize()});
-       // console.log(this.categories.cardsArray)
-      // const game1 = new Game(this.categories.cardsArray)
-       // game1.initialize()
+        
     };
 
 }
-console.log(category)
-console.log(location.href)
-if(location.href === "http://127.0.0.1:5500/index.html"){
 
     gameCategories.forEach((category) => {
         new Categories(category);
     })
-}
+
 
