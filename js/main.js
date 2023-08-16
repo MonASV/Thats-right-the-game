@@ -90,7 +90,7 @@ const mathCards = [
     },
     {
         "cardNumber": 9,
-        "question": "Which number always shows the same measurement in Celsius(°C) and Farenheit(°F)?",
+        "question": "Which number always shows the same measurement in °C and °F?",
         "answer": "-40",
     }
 ]
@@ -284,6 +284,147 @@ const sportCards = [
         "answer": "Ski",
     }
 ]
+const musicCards = [
+    {
+        "cardNumber": 1,
+        "question": "Which singer 'can't stop staring at those ocean eyes'?",
+        "answer": "Billie Eilish",
+    },
+    {
+        "cardNumber": 2,
+        "question": "Who is the best-selling female artist of all time?",
+        "answer": "Madonna",
+    },
+    {
+        "cardNumber": 3,
+        "question": "The Barbadian singer Robyn Fenty is better known by her middle name of what?",
+        "answer": "Rihanna",
+    },
+    {
+        "cardNumber": 4,
+        "question": "Which American pop star had back to back 2015 chart success with singles 'Sorry' and 'Love Yourself'?",
+        "answer": "Justin Bieber",
+    },
+    {
+        "cardNumber": 5,
+        "question": "American singer Stefani Joanne Angelina Germanotta is best known by which stagename?",
+        "answer": "Lady Gaga",
+    },
+    {
+        "cardNumber": 6,
+        "question": "Which artist is also known as Slim Shady?",
+        "answer": "Enimem",
+    },
+    {
+        "cardNumber": 7,
+        "question": "Who sang with the Wailers?",
+        "answer": "Bob Marley",
+    },
+    {
+        "cardNumber": 8,
+        "question": "Which artist has the best-selling album 'Goodbye Yellow Brick Road'?",
+        "answer": "Elton John",
+    },
+    {
+        "cardNumber": 9,
+        "question": "'Bad Blood', 'Love Story', and 'Cardigan' are hits for which best-selling American singer?",
+        "answer": "Taylor Swift",
+    }
+]
+const moviesCards = [
+    {
+        "cardNumber": 1,
+        "question": "What movie has the highest on-screen body count of all time?",
+        "answer": "The Lord of the Rings",
+    },
+    {
+        "cardNumber": 2,
+        "question": "Which iconic movie franchise has been around for even longer than James Bond?",
+        "answer": "Godzilla",
+    },
+    {
+        "cardNumber": 3,
+        "question": "What was the first movie to use digital de-aging?",
+        "answer": "X-Men",
+    },
+    {
+        "cardNumber": 4,
+        "question": "Which movie had the first post-credits scene of all time?",
+        "answer": "The Silencers",
+    },
+    {
+        "cardNumber": 5,
+        "question": "Which movie holds the Guinness World Record for the biggest stunt explosion in cinema history?",
+        "answer": "Spectre",
+    },
+    {
+        "cardNumber": 6,
+        "question": "What's the longest director's cut of all time?",
+        "answer": "Until the End of the World",
+    },
+    {
+        "cardNumber": 7,
+        "question": "What's the least expensive movie to earn over $1 billion globally?",
+        "answer": "Joker",
+    },
+    {
+        "cardNumber": 8,
+        "question": "Which Shakespeare play has the most movie adaptations?",
+        "answer": "Hamlet",
+    },
+    {
+        "cardNumber": 9,
+        "question": "What was the first-ever feature-length film shot entirely in color?",
+        "answer": "With Our King and Queen Through India",
+    }
+]
+const javaScriptCards = [
+    {
+        "cardNumber": 1,
+        "question": "0.1 + 0.2 = 0.30000000000000004",
+        "answer": "True",
+    },
+    {
+        "cardNumber": 2,
+        "question": "1.1 + 10000000000000000 = 10000000000000001",
+        "answer": "False",
+    },
+    {
+        "cardNumber": 3,
+        "question": "[1, 2, 3] + [4, 5, 6] = [1, 2, 34, 5, 6]",
+        "answer": "True",
+    },
+    {
+        "cardNumber": 4,
+        "question": "'5' — 3 = 2 && '5' + 3 = 53",
+        "answer": "True",
+    },
+    {
+        "cardNumber": 5,
+        "question": "true + true = 2",
+        "answer": "True",
+    },
+    {
+        "cardNumber": 6,
+        "question": "Math.min() < Math.max()",
+        "answer": "False",
+    },
+    {
+        "cardNumber": 7,
+        "question": "'2' + '2' = '4'",
+        "answer": "False",
+    },
+    {
+        "cardNumber": 8,
+        "question": "true == 'true'",
+        "answer": "False",
+    },
+    {
+        "cardNumber": 9,
+        "question": "010 - 03 = 07",
+        "answer": "False",
+    }
+]
 const cardByCategory = {
     history: historyCards,
     geography: geographyCards,
@@ -291,6 +432,9 @@ const cardByCategory = {
     chemistry: chemistryCards,
     art: artCards,
     sport: sportCards,
+    music: musicCards,
+    movies: moviesCards,
+    javaScript: javaScriptCards
 
 }
 const gameCategories = [
@@ -336,6 +480,9 @@ const gameCategories = [
 ]
 
 
+/*********************/
+/******Game Pages*****/
+/*********************/
 
 
 class Card {
@@ -508,10 +655,6 @@ class Game {
     }
 
 }
-//const game1 = new Game()
-//game1.initialize()
-
-
 
 
 /*********************/
@@ -577,6 +720,6 @@ else {
     const category = location.pathname.match(/.*\/(.*).html$/)[1]
     const game = new Game(category)
     game.initialize()
-    document.body.style.backgroundImage = `url('../Images/${category}.jpeg')`
+    document.body.style.backgroundImage = `url(../Images/${category}.jpeg)`
 }
 
