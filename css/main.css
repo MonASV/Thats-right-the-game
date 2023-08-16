@@ -8,12 +8,10 @@ body {
 }
 
 #board {
-    background-color: whitesmoke;
+    /*background-color: whitesmoke;*/
+    background-color: rgba(0,0,0,.3);
     height: 80vh;
     width: 70vw;
-    border: solid;
-    border-width: 0.3vh;
-    border-color: rgba(72, 36, 0, 0.259);
     border-radius: 5%;
     display: flex;
     flex-direction: row;
@@ -42,12 +40,9 @@ body {
   
   #possible-answers {
 
-    background-color: rgb(115, 84, 17);
+    background-color: rgba(0,0,0,.5);
     height: 80vh;
     width: 25vh;
-    border: solid;
-    border-width: 0.1vh;
-    border-color: rgb(42, 23, 240);
     border-radius: 3%;
     display: flex;
     flex-direction: column;

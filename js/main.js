@@ -381,27 +381,27 @@ const moviesCards = [
 const javaScriptCards = [
     {
         "cardNumber": 1,
-        "question": "0.1 + 0.2 = 0.30000000000000004",
+        "question": "0.1 + 0.2 == 0.30000000000000004",
         "answer": "True",
     },
     {
         "cardNumber": 2,
-        "question": "1.1 + 10000000000000000 = 10000000000000001",
+        "question": "1.1 + 10000000000000000 == 10000000000000001",
         "answer": "False",
     },
     {
         "cardNumber": 3,
-        "question": "[1, 2, 3] + [4, 5, 6] = [1, 2, 34, 5, 6]",
+        "question": "[1, 2, 3] + [4, 5, 6] == [1, 2, 34, 5, 6]",
         "answer": "True",
     },
     {
         "cardNumber": 4,
-        "question": "'5' — 3 = 2 && '5' + 3 = 53",
+        "question": "'5' — 3 = 2 && '5' + 3 == 53",
         "answer": "True",
     },
     {
         "cardNumber": 5,
-        "question": "true + true = 2",
+        "question": "true + true == 2",
         "answer": "True",
     },
     {
@@ -411,7 +411,7 @@ const javaScriptCards = [
     },
     {
         "cardNumber": 7,
-        "question": "'2' + '2' = '4'",
+        "question": "'2' + '2' == '4'",
         "answer": "False",
     },
     {
@@ -421,7 +421,7 @@ const javaScriptCards = [
     },
     {
         "cardNumber": 9,
-        "question": "010 - 03 = 07",
+        "question": "010 - 03 == 07",
         "answer": "False",
     }
 ]
@@ -680,6 +680,7 @@ class GameTile {
         this.domElement.style.width = this.width + "vw";
         this.domElement.style.height = this.height + "vh";
         //this.domElement.style.backgroundImage = url (this.categories.image)
+        
 
 
         this.domElement.innerHTML = `
