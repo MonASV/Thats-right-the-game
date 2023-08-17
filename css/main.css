@@ -102,13 +102,12 @@ body {
         background-image: url("../images/myGame.jpeg");
         
     
-      
-        
     
 }
 
 .category{
-    background-color: rgb(95, 215, 234);
+  
+
     text-align: center;
     font-size: 1.8vw;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -138,4 +137,10 @@ body {
   width: 2vw;
   height: 2vh;
   background-image: url("../images/correct.png");
+}
+
+.category-text{
+  background-color: rgb(37, 90, 160);
+  color:#d5f6f8;
+  border-radius: 3vh;
 }

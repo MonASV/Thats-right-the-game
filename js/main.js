@@ -228,8 +228,8 @@ const artCards = [
     },
     {
         "cardNumber": 8,
-        "question": "This artist was struck in the face with a mallet by an envious rival, permanently disfiguring him.",
-        "answer": "Gian Lorenzo Bernini",
+        "question": "Which famous painter cut off a part of his ear?",
+        "answer": "Vincent Van Gogh",
     },
     {
         "cardNumber": 9,
@@ -354,8 +354,8 @@ const moviesCards = [
     },
     {
         "cardNumber": 5,
-        "question": "Which movie holds the Guinness World Record for the biggest stunt explosion in cinema history?",
-        "answer": "Spectre",
+        "question": "What was Scream originally called?",
+        "answer": "Scary Movie",
     },
     {
         "cardNumber": 6,
@@ -501,6 +501,7 @@ class Card {
     createDomElement() {
         this.domElement = document.createElement("div");
 
+        this.domElement.id = `${this.cardObj.cardNumber}`
         this.domElement.className = "card";
 
         this.domElement.style.width = this.width + "vw";
@@ -508,7 +509,7 @@ class Card {
 
 
         this.domElement.innerHTML = `
-            <div id="${this.cardObj.cardNumber}">
+            <div id="text-container${this.cardObj.cardNumber}">
                 <div class="front">${this.cardObj.question}</div>
                 <div id="question${this.cardObj.cardNumber}" class="drop-area"></div>
                 
@@ -559,7 +560,7 @@ class Review {
         let points = 0;
 
         this.cards.forEach((card) => {
-    
+
             const answerArea = document.getElementById(`question${card.cardNumber}`)
             const chosenBox = answerArea.querySelector(".answers-box")
 
@@ -569,22 +570,17 @@ class Review {
 
                 if (choice.slice(-1) == card.cardNumber) {
                     points++;
-                        //$("[data-ca]")
-                        document.getElementById(`${card.cardNumber}`).style.backgroundColor = 'green';
-                        
-                        //let checkBox = document.createElement("div")
-                        //this.domElement.classList.add("mark")
-                
-                        //this.answerArea.appendChild(checkBox)
-                    
-                } else{
-                    document.getElementById(`${card.cardNumber}`).style.backgroundColor = 'red';
+
+                    document.getElementById(`${card.cardNumber}`).style.backgroundColor = 'rgb(20, 105, 20)';
+
+                } else {
+                    document.getElementById(`${card.cardNumber}`).style.backgroundColor = 'rgb(177, 0, 0)';
                 }
             }
 
 
-            else{
-                document.getElementById(`${card.cardNumber}`).style.backgroundColor = 'red';
+            else {
+                document.getElementById(`${card.cardNumber}`).style.backgroundColor = 'rgb(177, 0, 0)';
             }
         })
 
@@ -655,10 +651,10 @@ class Answers {
                     target.appendChild(selected);
                     selected = null;
                 })
-              
+
             })
 
-            
+
         })
     }
 
@@ -678,7 +674,7 @@ class Game {
         const myCards = [];
 
         window.addEventListener("load", (event) => {
-            this.cards.sort((a, b) => Math.random() > 0.5 ? 1 : -1) //ternary operator, requires else statement. 1 and -1 is what the sort method is expecting
+            this.cards.sort((a, b) => Math.random() > 0.5 ? 1 : -1)
             this.cards.forEach((cardObj) => {
                 const card = new Card(cardObj);
                 myCards.push(cardObj)
@@ -738,11 +734,12 @@ class GameTile {
 
         this.domElement.style.width = this.width + "vw";
         this.domElement.style.height = this.height + "vh";
-
+        this.domElement.style.backgroundImage = `url('./images/${this.category.categoryName}.jpeg')`;
 
         this.domElement.innerHTML = `
         
-        <div>${this.category.categoryName}</div>
+        <div class="category-text">${this.category.categoryName}</div>
+        
         
         `;
 
