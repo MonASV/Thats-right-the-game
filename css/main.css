@@ -11,7 +11,7 @@ body {
     background-color: rgba(0,0,0,.3);
     height: 80vh;
     width: 70vw;
-    border-radius: 2%;
+    border-radius: %;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -55,15 +55,16 @@ body {
   }
 
   #results{
-    background-color: #1274ca;
-    color: rgb(5, 5, 5);
-    height: 50vh;
-    width: 50vw;
+    padding: 3vh;
+    background-color: #0c2841;
+    color: rgb(190, 224, 229);
+    height: 71vh;
+    width: 19vh;
     position: fixed;
     text-align: center;
-    font-size: 4vw;
-    top: 25vh;
-    right: 25vw;
+    font-size: 2vw;
+    
+    
 
   }
 

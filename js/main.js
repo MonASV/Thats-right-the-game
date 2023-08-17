@@ -545,7 +545,6 @@ class Review {
     constructor(myCards) {
         this.cards = myCards;
         this.domElement = null;
-        //this.createDomElement();
     }
 
     checkResults() {
@@ -571,7 +570,7 @@ class Review {
         this.domElement.innerHTML =
             `<div>Correct answers: ${points}</div>`
 
-        const parentElm = document.body;
+        const parentElm = document.getElementById("possible-answers");
         parentElm.appendChild(this.domElement);
 
     }
@@ -644,7 +643,10 @@ class Game {
             setTimeout(() => {
                 review.printResults()
             }, "120000")
-
+            setTimeout(() => {
+                let lastSound = new Audio('./music/15seconds.mp3');
+                lastSound.play();
+            }, "103000")
 
         })
     }
@@ -676,16 +678,17 @@ class GameTile {
         this.domElement = document.createElement("div");
 
         this.domElement.className = "category";
+        
 
         this.domElement.style.width = this.width + "vw";
         this.domElement.style.height = this.height + "vh";
+        
 
         this.domElement.innerHTML = `
         
         <div>${this.category.categoryName}</div>
         
         `;
-
 
         const myBoard = document.getElementById("board1");
         myBoard.appendChild(this.domElement);
@@ -719,7 +722,11 @@ else {
     document.body.style.backgroundImage = "url(" + `${imagePath}` + ")"
     const musicPath = `./music/${category}.mp3`
     let mySound = new Audio(musicPath);
+    mySound.currentTime = 0;
     mySound.play();
     mySound.volume = 0.7
-    console.log(imagePath)
+    setTimeout(() => {
+    mySound.pause(); 
+    }, "102999")
+    
 }
