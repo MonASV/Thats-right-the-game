@@ -508,7 +508,7 @@ class Card {
 
 
         this.domElement.innerHTML = `
-            <div data-card-name="${this.cardObj.cardNumber}">
+            <div id="${this.cardObj.cardNumber}">
                 <div class="front">${this.cardObj.question}</div>
                 <div id="question${this.cardObj.cardNumber}" class="drop-area"></div>
                 
@@ -554,12 +554,13 @@ class Review {
         this.domElement = null;
     }
 
+
     checkResults() {
         let points = 0;
 
         this.cards.forEach((card) => {
+    
             const answerArea = document.getElementById(`question${card.cardNumber}`)
-            console.log(answerArea)
             const chosenBox = answerArea.querySelector(".answers-box")
 
             if (chosenBox !== null) {
@@ -567,8 +568,23 @@ class Review {
                 const choice = chosenBox.id
 
                 if (choice.slice(-1) == card.cardNumber) {
-                    points++
+                    points++;
+                        //$("[data-ca]")
+                        document.getElementById(`${card.cardNumber}`).style.backgroundColor = 'green';
+                        
+                        //let checkBox = document.createElement("div")
+                        //this.domElement.classList.add("mark")
+                
+                        //this.answerArea.appendChild(checkBox)
+                    
+                } else{
+                    document.getElementById(`${card.cardNumber}`).style.backgroundColor = 'red';
                 }
+            }
+
+
+            else{
+                document.getElementById(`${card.cardNumber}`).style.backgroundColor = 'red';
             }
         })
 
@@ -582,7 +598,9 @@ class Review {
         this.domElement.id = "results";
 
         this.domElement.innerHTML =
-            `<div>Correct answers: ${points}</div>`
+            `<div>Correct answers: ${points}</div>
+            <button onclick="window.location.href='./index.html'">Play another sprint</button>
+            <button onclick="window.location.reload()">Try again</button>`
 
         const parentElm = document.getElementById("possible-answers");
         parentElm.appendChild(this.domElement);
@@ -637,7 +655,10 @@ class Answers {
                     target.appendChild(selected);
                     selected = null;
                 })
+              
             })
+
+            
         })
     }
 
@@ -672,7 +693,8 @@ class Game {
             const button = new Button();
             const review = new Review(myCards);
             button.domElement.addEventListener("click", () => {
-                review.printResults()
+                review.printResults();
+
             })
             setTimeout(() => {
                 review.printResults()
@@ -756,9 +778,9 @@ else {
     document.body.style.backgroundImage = "url(" + `${imagePath}` + ")"
     const musicPath = `./music/${category}.mp3`
     let mySound = new Audio(musicPath);
-    mySound.currentTime = 0;
     mySound.play();
-    mySound.volume = 0.7
+    mySound.loop = true;
+    mySound.volume = 0.5
     setTimeout(() => {
         mySound.pause();
     }, "102999")

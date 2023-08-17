@@ -56,10 +56,12 @@ body {
   }
 
   #results{
+    
     padding: 3vh;
+    padding-top: 27vh;
     background-color: #0c2841;
     color: rgb(190, 224, 229);
-    height: 71vh;
+    height: 50vh;
     width: 19vh;
     position: fixed;
     text-align: center;
@@ -126,4 +128,14 @@ body {
     margin: auto;
     
   
+}
+
+.front{
+  padding-bottom: 8%;
+}
+
+.mark{
+  width: 2vw;
+  height: 2vh;
+  background-image: url("../images/correct.png");
 }
