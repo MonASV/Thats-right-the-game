@@ -441,41 +441,47 @@ const gameCategories = [
     {
         categoryName: "Geography",
         link: "./geography.html",
-        image: "../images/background-geo.jpeg",
-        cardsArray: geographyCards
+        imagePath: "geography"
     },
     {
         categoryName: "History",
         link: "./history.html",
-        cardsArray: historyCards
+        imagePath: "history"
     },
     {
         categoryName: "Math",
-        link: "./math.html"
+        link: "./math.html",
+        imagePath: "math"
     },
     {
         categoryName: "Chemistry",
-        link: "./chemistry.html"
+        link: "./chemistry.html",
+        imagePath: "chemistry"
     },
     {
         categoryName: "Sport",
-        link: "./sport.html"
+        link: "./sport.html",
+        imagePath: "sport"
     },
     {
         categoryName: "Music",
-        link: "./music.html"
+        link: "./music.html",
+        imagePath: "music"
     },
     {
         categoryName: "Art",
-        link: "./art.html"
+        link: "./art.html",
+        imagePath: "art"
     },
     {
         categoryName: "Movies",
-        link: "./movies.html"
+        link: "./movies.html",
+        imagePath: "movies"
     },
     {
         categoryName: "JavaScript",
-        link: "./javaScript.html"
+        link: "./javaScript.html",
+        imagePath: "javaScript"
     }
 ]
 
@@ -734,7 +740,7 @@ class GameTile {
 
         this.domElement.style.width = this.width + "vw";
         this.domElement.style.height = this.height + "vh";
-        this.domElement.style.backgroundImage = `url('./images/${this.category.categoryName}.jpeg')`;
+        this.domElement.style.backgroundImage = `url('./images/${this.category.imagePath}.jpeg')`;
 
         this.domElement.innerHTML = `
         
