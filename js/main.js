@@ -508,19 +508,26 @@ class Card {
 
 
         this.domElement.innerHTML = `
-            <div class="geoCard" data-card-name="${this.cardObj.cardNumber}">
+            <div data-card-name="${this.cardObj.cardNumber}">
                 <div class="front">${this.cardObj.question}</div>
-                <input id="${this.cardObj.cardNumber}" class="answer" type="text" size="20" placeholder="...">
+                <div id="question${this.cardObj.cardNumber}" class="drop-area"></div>
                 
             </div>
         `;
+
+
         const myBoard = document.getElementById("board");
         myBoard.appendChild(this.domElement);
         ;
     };
 
+    createDropElement() {
+        this.dropElement = document.createElement("div");
+        this.dropElement.classList.add("drop-area");
 
-
+        const myCard = document.getElementsByClassName('card')
+        myCard.appendChild(this.dropElement)
+    }
 
 }
 
@@ -551,10 +558,17 @@ class Review {
         let points = 0;
 
         this.cards.forEach((card) => {
-            let correctAnswer = card.answer;
-            let userAnswer = document.getElementById(card.cardNumber).value
-            if (correctAnswer == userAnswer) {
-                points++
+            const answerArea = document.getElementById(`question${card.cardNumber}`)
+            console.log(answerArea)
+            const chosenBox = answerArea.querySelector(".answers-box")
+
+            if (chosenBox !== null) {
+
+                const choice = chosenBox.id
+
+                if (choice.slice(-1) == card.cardNumber) {
+                    points++
+                }
             }
         })
 
@@ -577,8 +591,8 @@ class Review {
 }
 
 class Answers {
-    constructor(myCards) {
-        this.cards = myCards
+    constructor(myCard) {
+        this.card = myCard
         this.width = 10;
         this.height = 5;
         this.domElement = null;
@@ -593,20 +607,39 @@ class Answers {
 
         this.domElement = document.createElement("div");
 
-        this.domElement.id = "answers";
+
+        this.domElement.id = `answers${this.card.cardNumber}`;
+        this.domElement.classList.add('answers-box');
+        this.domElement.draggable = true;
 
         this.domElement.style.width = this.width + "vw";
         this.domElement.style.height = this.height + "vh";
+        this.domElement.innerHTML = this.card.answer;
 
-        this.domElement.innerHTML = `
-                <div class="answers-box">${this.cards.answer}</div>
-        `;
         const myBoard = document.getElementById("possible-answers");
         myBoard.appendChild(this.domElement);
 
-
-        //document.querySelectorAll('#possible-answers').innerHTML = this.domElement;
     };
+
+    makeDroppable() {
+        let answerBox = this.domElement;
+        let originBoard = document.getElementById("possible.answers");
+        let targets = document.getElementsByClassName("drop-area");
+
+        answerBox.addEventListener("dragstart", function (e) {
+            let selected = e.target;
+
+            Array.from(targets).forEach((target) => {
+                target.addEventListener("dragover", function (e) {
+                    e.preventDefault();
+                });
+                target.addEventListener("drop", function (e) {
+                    target.appendChild(selected);
+                    selected = null;
+                })
+            })
+        })
+    }
 
 
 }
@@ -620,7 +653,7 @@ class Game {
         this.cards = cardByCategory[category]
     }
     initialize() {
-        
+
         const myCards = [];
 
         window.addEventListener("load", (event) => {
@@ -633,6 +666,7 @@ class Game {
             this.cards.sort((a, b) => Math.random() > 0.5 ? 1 : -1)
             this.cards.forEach((cardObj) => {
                 const answers = new Answers(cardObj);
+                answers.makeDroppable()
             })
 
             const button = new Button();
@@ -668,21 +702,21 @@ class GameTile {
 
         let myAudio = document.querySelector('#audio')
         myAudio.play()
-        
+
         this.createDomElement();
-        
+
     }
- 
+
 
     createDomElement() {
         this.domElement = document.createElement("div");
 
         this.domElement.className = "category";
-        
+
 
         this.domElement.style.width = this.width + "vw";
         this.domElement.style.height = this.height + "vh";
-        
+
 
         this.domElement.innerHTML = `
         
@@ -726,7 +760,8 @@ else {
     mySound.play();
     mySound.volume = 0.7
     setTimeout(() => {
-    mySound.pause(); 
+        mySound.pause();
     }, "102999")
-    
+
 }
+
