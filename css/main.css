@@ -3,7 +3,6 @@ body {
     padding: 5vh;
     display: flex;
     flex-direction:row;
-    /* background-image: url("../images/background-geo.jpeg"); */
     
 }
 
@@ -21,14 +20,16 @@ body {
 }
 
 .card {
-
+  
+  padding: 2vh;
     background-color: rgb(220, 218, 162);
     text-align: center;
-    font-size: 1.8vw;
+    font-size: 1.5vw;
     border: solid;
     border-width: 0.3vh;
     border-color: rgba(72, 36, 0, 0.259);
     border-radius: 5%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     
   }
 
@@ -47,7 +48,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+    align-items: center;
+    font-size: 1vw;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
   }
 
@@ -67,17 +70,16 @@ body {
   .answers-box{
     background-color: rgb(220, 218, 162);;
     text-align: center;
+    border-radius: 2%;
   }
 /*********************/
 /******Home Page******/
 /*********************/
 
   #board1 {
-    background-color: rgb(120, 21, 219);
+    background-color: rgb(11, 6, 146, 0.3);
     height: 80vh;
     width: 80vw;
-    border: solid;
-    border-width: 0.3vh;
     border-color: rgba(72, 36, 0, 0.259);
     border-radius: 5%;
     display: flex;
@@ -92,8 +94,7 @@ body {
     
         margin: 5vh;
         padding: 5vw;
-        background-color: #1274ca;
-        background-image: url("httpds://cdn.dribbble.com/users/59947/screenshots/17006879/media/102a4edaac3eda5c7f1fc5d7e21a5b50.jpg?resize=768x576&vertical=center");
+        background-image: url("../images/myGame.jpeg");
     
       
         

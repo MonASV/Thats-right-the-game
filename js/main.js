@@ -643,8 +643,8 @@ class Game {
             button.domElement.addEventListener("click", () => {
                 review.printResults()
             })
-            setTimeout(() => { 
-                review.printResults() 
+            setTimeout(() => {
+                review.printResults()
             }, "120000")
 
 
@@ -665,11 +665,11 @@ class GameTile {
         this.width = 20;
         this.height = 20;
         this.domElement = null;
-
+        //this.imagePath = `./images/${category}.jpeg`
 
 
         this.createDomElement();
-
+        
     }
 
     createDomElement() {
@@ -679,8 +679,9 @@ class GameTile {
 
         this.domElement.style.width = this.width + "vw";
         this.domElement.style.height = this.height + "vh";
-        //this.domElement.style.backgroundImage = url (this.categories.image)
+        //this.domElement.style.backgroundImage = "url(" + `${this.imagePath}` + ")"
         
+       // document.body.style.backgroundImage = "url(" + `${imagePath}` + ")"
 
 
         this.domElement.innerHTML = `
@@ -698,27 +699,27 @@ class GameTile {
 
 
             location.href = this.category.link
-            
 
-            
+
+
         });
     };
 }
 
-if(!location.pathname.endsWith(".html")) {
+if (!location.pathname.endsWith(".html")) {
     location.href = "./index.html"
 }
 
-if (location.pathname.endsWith("index.html")){
+if (location.pathname.endsWith("index.html")) {
     gameCategories.forEach((category) => {
-    new GameTile(category);
-})
+        new GameTile(category);
+    })
 }
 else {
     const category = location.pathname.match(/.*\/(.*).html$/)[1]
     const game = new Game(category)
     game.initialize()
     const imagePath = `./images/${category}.jpeg`
-    document.body.style.backgroundImage = "url("+`${imagePath}`+")"
+    document.body.style.backgroundImage = "url(" + `${imagePath}` + ")"
     console.log(imagePath)
 }
