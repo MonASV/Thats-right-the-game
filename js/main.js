@@ -517,8 +517,6 @@ class Card {
         const myBoard = document.getElementById("board");
         myBoard.appendChild(this.domElement);
         ;
-        console.log(this.cardObj.cardsArray)
-        //document.querySelectorAll('#board').innerHTML = this.domElement;
     };
 
 
@@ -623,7 +621,7 @@ class Game {
         this.cards = cardByCategory[category]
     }
     initialize() {
-        //location.href = "./game.html"
+        
         const myCards = [];
 
         window.addEventListener("load", (event) => {
@@ -665,12 +663,14 @@ class GameTile {
         this.width = 20;
         this.height = 20;
         this.domElement = null;
-        //this.imagePath = `./images/${category}.jpeg`
 
-
+        let myAudio = document.querySelector('#audio')
+        myAudio.play()
+        
         this.createDomElement();
         
     }
+ 
 
     createDomElement() {
         this.domElement = document.createElement("div");
@@ -679,10 +679,6 @@ class GameTile {
 
         this.domElement.style.width = this.width + "vw";
         this.domElement.style.height = this.height + "vh";
-        //this.domElement.style.backgroundImage = "url(" + `${this.imagePath}` + ")"
-        
-       // document.body.style.backgroundImage = "url(" + `${imagePath}` + ")"
-
 
         this.domElement.innerHTML = `
         
@@ -694,7 +690,6 @@ class GameTile {
         const myBoard = document.getElementById("board1");
         myBoard.appendChild(this.domElement);
 
-        //document.querySelectorAll('#board1').innerHTML = this.domElement;
         this.domElement.addEventListener("click", () => {
 
 
@@ -713,6 +708,7 @@ if (!location.pathname.endsWith(".html")) {
 if (location.pathname.endsWith("index.html")) {
     gameCategories.forEach((category) => {
         new GameTile(category);
+
     })
 }
 else {
@@ -721,5 +717,9 @@ else {
     game.initialize()
     const imagePath = `./images/${category}.jpeg`
     document.body.style.backgroundImage = "url(" + `${imagePath}` + ")"
+    const musicPath = `./music/${category}.mp3`
+    let mySound = new Audio(musicPath);
+    mySound.play();
+    mySound.volume = 0.7
     console.log(imagePath)
 }
