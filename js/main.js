@@ -1,5 +1,3 @@
-
-
 const geographyCards = [
     {
         "cardNumber": 1,
@@ -381,38 +379,38 @@ const moviesCards = [
 const javaScriptCards = [
     {
         "cardNumber": 1,
-        "question": "0.1 + 0.2 == 0.30000000000000004",
-        "answer": "True",
+        "question": "0.1 + 0.2 == ",
+        "answer": "0.30000000000000004",
     },
     {
         "cardNumber": 2,
-        "question": "1.1 + 10000000000000000 == 10000000000000001",
-        "answer": "False",
+        "question": "1.1 + 10000000000000000 == ",
+        "answer": "10000000000000002",
     },
     {
         "cardNumber": 3,
-        "question": "[1, 2, 3] + [4, 5, 6] == [1, 2, 34, 5, 6]",
-        "answer": "True",
+        "question": "[1, 2, 3] + [4, 5, 6] == ",
+        "answer": "[1, 2, 34, 5, 6]",
     },
     {
         "cardNumber": 4,
-        "question": "'5' — 3 = 2 && '5' + 3 == 53",
-        "answer": "True",
+        "question": "'5' — 3 = 2 && '5' + 3 == ",
+        "answer": "53",
     },
     {
         "cardNumber": 5,
-        "question": "true + true == 2",
-        "answer": "True",
+        "question": "true + true ==",
+        "answer": " 2",
     },
     {
         "cardNumber": 6,
-        "question": "Math.min() < Math.max()",
-        "answer": "False",
+        "question": "Math.min() > Math.max()",
+        "answer": "True",
     },
     {
         "cardNumber": 7,
-        "question": "'2' + '2' == '4'",
-        "answer": "False",
+        "question": "'2' + '2' == ",
+        "answer": "'22'",
     },
     {
         "cardNumber": 8,
@@ -421,8 +419,8 @@ const javaScriptCards = [
     },
     {
         "cardNumber": 9,
-        "question": "010 - 03 == 07",
-        "answer": "False",
+        "question": "010 - 03 == ",
+        "answer": "05",
     }
 ]
 const cardByCategory = {
@@ -484,11 +482,6 @@ const gameCategories = [
         imagePath: "javaScript"
     }
 ]
-
-
-/*********************/
-/******Game Pages*****/
-/*********************/
 
 
 class Card {
@@ -577,16 +570,16 @@ class Review {
                 if (choice.slice(-1) == card.cardNumber) {
                     points++;
 
-                    document.getElementById(`${card.cardNumber}`).style.backgroundColor = 'rgb(20, 105, 20)';
+                    document.getElementById(`${card.cardNumber}`).style.backgroundImage = `url('./images/correct.jpg')`;
 
                 } else {
-                    document.getElementById(`${card.cardNumber}`).style.backgroundColor = 'rgb(177, 0, 0)';
+                    document.getElementById(`${card.cardNumber}`).style.backgroundImage = `url('./images/wrong.png')`;
                 }
             }
 
 
             else {
-                document.getElementById(`${card.cardNumber}`).style.backgroundColor = 'rgb(177, 0, 0)';
+                document.getElementById(`${card.cardNumber}`).style.backgroundImage = `url('./images/wrong.png')`;
             }
         })
 
@@ -598,7 +591,7 @@ class Review {
         const points = this.checkResults()
         this.domElement = document.createElement("div")
         this.domElement.id = "results";
-
+        
         this.domElement.innerHTML =
             `<div>Correct answers: ${points}</div>
             <button onclick="window.location.href='./index.html'">Play another sprint</button>
@@ -667,8 +660,6 @@ class Answers {
 
 }
 
-
-
 class Game {
 
     constructor(category) {
@@ -710,12 +701,6 @@ class Game {
     }
 
 }
-
-
-/*********************/
-/******Home Page******/
-/*********************/
-
 
 class GameTile {
     constructor(category) {
