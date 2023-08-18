@@ -226,8 +226,8 @@ const artCards = [
     },
     {
         "cardNumber": 8,
-        "question": "Which famous painter cut off a part of his ear?",
-        "answer": "Vincent Van Gogh",
+        "question": "Who painted 'The Scream'?",
+        "answer": "Edvard Munch",
     },
     {
         "cardNumber": 9,
